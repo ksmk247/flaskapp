@@ -4,19 +4,25 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git url: 'https://github.com/ksmk247/flaskapp.git', branch: 'main'
+                git branch: 'main', url: 'https://github.com/ksmk247/flaskapp.git'
             }
         }
 
-        stage('Install') {
+        stage('Build') {
             steps {
-                sh 'pip install -r requirements.txt'
+                echo 'Building...'
             }
         }
 
-        stage('Run') {
+        stage('Test') {
             steps {
-                sh 'python app.py'
+                echo 'Testing...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
             }
         }
     }
