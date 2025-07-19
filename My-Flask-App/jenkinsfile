@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                git credentialsId: 'your-credentials-id', url: 'https://github.com/your-username/my-flask-app.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'No tests added yet'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'python3 app.py &'
+            }
+        }
+    }
+}
